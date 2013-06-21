@@ -87,14 +87,6 @@ class SessionController extends ControllerBase
                 return $this->forward('invoices/index');
             }
 
-            $username = $this->request->getPost('email', 'alphanum');
-            $user = Users::findFirst("username='$email' AND password='$password' AND active='Y'");
-            if ($user != false) {
-                $this->_registerSession($user);
-                $this->flash->success('Welcome ' . $user->name);
-                return $this->forward('invoices/index');
-            }
-
             $this->flash->error('Wrong email/password');
         }
 
